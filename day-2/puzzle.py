@@ -6,18 +6,18 @@ def read_file(name):
         return [line.strip() for line in file]
 
 
-class PassWordPolicy(object):
+class PassWordPolicy:
 
-    def __init__(self, min, max, char, password):
-        self._min = min
-        self._max = max
+    def __init__(self, lower_bound, upper_bound, char, password):
+        self._min = lower_bound
+        self._max = upper_bound
         self._char = char
         self._password = password
 
 
     def is_compliant_v1(self):
         count = self._password.count(self._char)
-        return self._min <= count and count <= self._max
+        return self._min <= count <= self._max
 
 
     def is_compliant_v2(self):
@@ -36,8 +36,8 @@ def parse_policy(line):
         return None
 
     return PassWordPolicy(
-        min = int(match.group(1)),
-        max = int(match.group(2)),
+        lower_bound = int(match.group(1)),
+        upper_bound = int(match.group(2)),
         char = match.group(3),
         password = match.group(4)
     )

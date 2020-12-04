@@ -4,23 +4,23 @@ def read_file(name):
 
 
 def build_locations(lines):
-    return [[char for char in line] for line in lines]
+    return [list(line) for line in lines]
 
 
 def count_trees(locations, slope_x, slope_y):
-    x, y = 0, 0
+    x_pos, y_pos = 0, 0
     x_bound = len(locations[0])
     y_bound = len(locations)
 
     count = 0
     while True:
-        if locations[y][x % x_bound] == '#':
+        if locations[y_pos][x_pos % x_bound] == '#':
             count += 1
 
-        x += slope_x
-        y += slope_y
+        x_pos += slope_x
+        y_pos += slope_y
 
-        if (y >= y_bound):
+        if y_pos >= y_bound:
             break
 
     return count
@@ -49,8 +49,8 @@ def main():
     counts_product = product(counts)
     print("Part 2: found product {}".format(counts_product))
 
-    for i in range(len(slopes)):
-        print("  > slope {}: found {} tree(s)".format(slopes[i], counts[i]))
+    for i, slope in enumerate(slopes):
+        print("  > slope {}: found {} tree(s)".format(slope, counts[i]))
 
 
 if __name__ == '__main__':
