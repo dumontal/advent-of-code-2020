@@ -1,6 +1,4 @@
-def read_file(name):
-    with open(name, "r") as file:
-        return [line.strip() for line in file]
+from inputs.reader import read_input_file
 
 
 def decode_seat(line):
@@ -32,7 +30,7 @@ def find_missing_seat_id(seat_ids):
 
 
 def main():
-    lines = read_file("boarding-passes.txt")
+    lines = read_input_file("5.txt")
     seats = [ decode_seat(line) for line in lines ]
     seat_ids = [ get_seat_id(seat) for seat in seats ]
     max_seat_id = max(seat_ids)

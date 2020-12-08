@@ -1,9 +1,6 @@
 import re
 
-
-def read_file(name):
-    with open(name, "r") as file:
-        return [line.strip() for line in file]
+from inputs.reader import read_input_file
 
 
 def gather_passports(lines):
@@ -86,7 +83,7 @@ def has_valid_passport_id(passport):
 
 
 def main():
-    lines = read_file("passports.txt")
+    lines = read_input_file("4.txt")
     passports = gather_passports(lines)
     valid_passports = [passport for passport in passports if is_valid_v1(passport)]
     print("Part 1: found {} valid passports".format(len(valid_passports)))

@@ -1,8 +1,6 @@
 import re
 
-def read_file(name):
-    with open(name, "r") as file:
-        return [line.strip() for line in file]
+from inputs.reader import read_input_file
 
 
 OUTER_BAG_PATTERN = re.compile(r"(\w+ \w+) bags")
@@ -70,7 +68,7 @@ def count_inner_bags(rules, bag):
 
 
 def main():
-    lines = read_file("rules.txt")
+    lines = read_input_file("7.txt")
     rules = gather_rules(lines)
 
     outer_bags = search_outer_bags(rules, "shiny gold")

@@ -1,6 +1,4 @@
-def read_file(name):
-    with open(name, "r") as file:
-        return [line.strip() for line in file]
+from inputs.reader import read_input_file
 
 
 def build_locations(lines):
@@ -39,7 +37,7 @@ def product(values):
 
 
 def main():
-    lines = read_file("map.txt")
+    lines = read_input_file("3.txt")
     locations = build_locations(lines)
     count = count_trees(locations, slope_x=3, slope_y=1)
     print("Part 1: found {} tree(s) along the path".format(count))

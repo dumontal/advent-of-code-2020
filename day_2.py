@@ -1,9 +1,6 @@
 import re
 
-
-def read_file(name):
-    with open(name, "r") as file:
-        return [line.strip() for line in file]
+from inputs.reader import read_input_file
 
 
 class PassWordPolicy:
@@ -44,7 +41,7 @@ def parse_policy(line):
 
 
 def main():
-    lines = read_file("input.txt")
+    lines = read_input_file("2.txt")
     policies = [parse_policy(line) for line in lines]
 
     compliant_policies_v1 = [policy for policy in policies if policy.is_compliant_v1()]

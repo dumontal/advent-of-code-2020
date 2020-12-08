@@ -1,6 +1,4 @@
-def read_file(name):
-    with open(name, "r") as file:
-        return [line.strip() for line in file]
+from inputs.reader import read_input_file
 
 
 def find_pair(entries_set, target_sum):
@@ -27,7 +25,7 @@ def find_trio(entries_set, target_sum):
 
 
 def main():
-    lines = read_file("input.txt")
+    lines = read_input_file("1.txt")
     entries = [int(line) for line in lines]
 
     entries_set = set(entries)
